@@ -107,15 +107,6 @@ export interface RoadItem {
   closed: boolean
 }
 
-export interface RouteResult {
-  from: string
-  to: string
-  path: string[]
-  travelTime: number
-  reachable: boolean
-  pathLocations?: LocationItem[]
-}
-
 export interface DashboardData {
   totalLocations: number
   totalRoadConnections: number

@@ -45,7 +45,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                         // Public read endpoints
                         .requestMatchers(HttpMethod.GET, "/api/locations/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/roads/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/routes/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/reports/public").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/dashboard/stats").permitAll()
                         // Pre-flight requests

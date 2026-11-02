@@ -7,10 +7,8 @@ import {
   LayoutDashboard,
   LogOut,
   MapPin,
-  Navigation,
   ShieldCheck,
   FilePlus,
-  Compass,
 } from 'lucide-react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
@@ -27,12 +25,10 @@ export function Sidebar() {
   // Define navigation items based on operational role
   let navItems = [
     { to: '/', label: 'Overview', icon: LayoutDashboard },
-    { to: '/map', label: 'Map & Route Planner', icon: Compass },
     { to: '/reports', label: 'Damage Reports', icon: AlertTriangle },
     { to: '/priority', label: 'Priority Queue', icon: ShieldCheck },
     { to: '/teams', label: 'Maintenance Teams', icon: HardHat },
     { to: '/network', label: 'Road Network', icon: GitFork },
-    { to: '/routes', label: 'Route Finder', icon: Navigation },
     { to: '/assignments', label: 'Assignments', icon: ClipboardList },
     { to: '/archive', label: 'Completed Archive', icon: Archive },
   ]
@@ -40,23 +36,18 @@ export function Sidebar() {
   if (isFireServiceOfficer) {
     navItems = [
       { to: '/', label: 'Incident Overview', icon: LayoutDashboard },
-      { to: '/map', label: 'Map & Route Planner', icon: Compass },
       { to: '/reports', label: 'Damage Reports', icon: AlertTriangle },
       { to: '/priority', label: 'Priority Queue', icon: ShieldCheck },
       { to: '/network', label: 'Road Network', icon: GitFork },
-      { to: '/routes', label: 'Route Finder', icon: Navigation },
     ]
   } else if (isMaintenanceStaff) {
     navItems = [
       { to: '/worker', label: 'My Assignments', icon: HardHat },
-      { to: '/map', label: 'Map & Route Planner', icon: Compass },
       { to: '/network', label: 'Road Network', icon: GitFork },
-      { to: '/routes', label: 'Route Finder', icon: Navigation },
     ]
   } else if (isViewer) {
     navItems = [
       { to: '/public', label: 'Citizen Portal', icon: FilePlus },
-      { to: '/map', label: 'Map & Route Planner', icon: Compass },
       { to: '/network', label: 'Live Road Status', icon: GitFork },
     ]
   }

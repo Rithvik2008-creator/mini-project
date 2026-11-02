@@ -7,7 +7,7 @@ Write-Host "`n[1/3] Checking MySQL Server (Port 3306)..." -ForegroundColor Yello
 $mysqlListening = Get-NetTCPConnection -LocalPort 3306 -State Listen -ErrorAction SilentlyContinue
 if (-not $mysqlListening) {
     Write-Host "Starting MySQL server from C:\xampp\mysql\bin\mysqld.exe..." -ForegroundColor Yellow
-    Start-Process -FilePath "C:\xampp\mysql\bin\mysqld.exe" -ArgumentList "--defaults-file=C:\xampp\mysql\bin\my.ini --console" -WindowStyle Minimized
+    Start-Process -FilePath "C:\xampp\mysql\bin\mysqld.exe" -ArgumentList "--defaults-file=C:\xampp\mysql\bin\my.ini --standalone" -WindowStyle Hidden
     Start-Sleep -Seconds 3
 } else {
     Write-Host "MySQL is already active on port 3306." -ForegroundColor Green

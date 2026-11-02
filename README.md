@@ -1,8 +1,8 @@
 # SMART MUNICIPAL ROAD MAINTENANCE AND RESOURCE ALLOCATION SYSTEM
 
-A complete enterprise-grade full-stack web application designed for municipal infrastructure monitoring, damage assessment, automated work crew dispatching, shortest-path emergency navigation, and GIS visualization.
+A complete enterprise-grade full-stack web application designed for municipal infrastructure monitoring, damage assessment, automated work crew dispatching, shortest-path emergency navigation, and priority-driven repairs.
 
-Built with **React (TypeScript + Vite + Tailwind CSS)**, **Java (Spring Boot 3 + Spring Data JPA + Spring Security)**, **MySQL**, and **Google Maps JavaScript API**.
+Built with **React (TypeScript + Vite + Tailwind CSS)**, **Java (Spring Boot 3 + Spring Data JPA + Spring Security)**, and **MySQL**.
 
 **GitHub Repository**: [https://github.com/Rithvik2008-creator/mini-project.git](https://github.com/Rithvik2008-creator/mini-project.git)
 
@@ -33,10 +33,6 @@ The system implements core object-oriented software engineering principles and a
    - Identifies compatible, available teams with reachable Dijkstra routes.
    - Dispatches the nearest team (minimum travel time).
    - Upon job completion, releases the team back to available status and relocates them to the repaired site.
-5. **Google Maps GIS Integration**:
-   - Dedicated **Map & Route Planner** page with interactive Google Maps.
-   - Visualizes municipal road node markers, damage report pins (color-coded by severity/status), and the calculated Dijkstra route as an interactive polyline.
-   - Graceful fallback: If Google Maps API key is not configured, displays an informative setup guide alongside the interactive municipal graph canvas.
 
 ---
 
@@ -61,7 +57,7 @@ The system implements core object-oriented software engineering principles and a
 
 | Layer | Technologies |
 |---|---|
-| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS v4, Lucide React, Recharts, Axios, `@googlemaps/js-api-loader` |
+| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS v4, Lucide React, Recharts, Axios |
 | **Backend** | Java 21 / 26, Spring Boot 3.4.0, Spring Security, Spring Web, Spring Data JPA, Spring Mail |
 | **Database** | MySQL Server / MariaDB via MySQL Connector/J (`road_maintenance_db`) |
 | **Testing** | JUnit 5, Mockito, Spring Security Test (25 automated test cases) |
@@ -114,12 +110,10 @@ d:/mp/
             ├── LoginPage.tsx                  # Secure user authentication
             ├── SignupPage.tsx                 # Registration with Gmail OTP verification
             ├── DashboardPage.tsx              # Municipal analytics & charts
-            ├── MapRoutePlannerPage.tsx        # Google Maps + Dijkstra GIS routing
             ├── DamageReportsPage.tsx          # Incident management
             ├── PriorityQueuePage.tsx          # Live ranking queue display
             ├── MaintenanceTeamsPage.tsx       # Equipment & crew availability
             ├── RoadNetworkPage.tsx            # Road connections & dynamic closures
-            ├── RouteFinderPage.tsx            # Route calculator
             └── AssignmentsPage.tsx            # Crew dispatching & completion
 ```
 
@@ -151,9 +145,6 @@ MAIL_FROM=your_email@gmail.com
 
 # Administrative Provisioning Secret Key
 ADMIN_SECRET_KEY=ADMIN_SECRET_KEY_2026
-
-# Google Maps API Key (Optional: for satellite / vector map tiles)
-VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 ```
 
 > **Gmail App Password Setup**:
@@ -216,7 +207,6 @@ npm.cmd run build
 - **Frontend**: Deploy `frontend/dist` to **Vercel**, **Netlify**, or **Cloudflare Pages**.
 - **Backend**: Containerize `backend` or deploy JAR via **Render**, **Railway**, or **AWS ECS/EC2**.
 - **Database**: Cloud MySQL instance (e.g. **Aiven**, **PlanetScale**, or **AWS RDS**).
-- **Domain & Maps**: Restrict `VITE_GOOGLE_MAPS_API_KEY` to the production domain URL via Google Cloud Console.
 
 ---
 

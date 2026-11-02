@@ -11,8 +11,6 @@ import { DamageReportsPage } from './pages/DamageReportsPage'
 import { PriorityQueuePage } from './pages/PriorityQueuePage'
 import { MaintenanceTeamsPage } from './pages/MaintenanceTeamsPage'
 import { RoadNetworkPage } from './pages/RoadNetworkPage'
-import { RouteFinderPage } from './pages/RouteFinderPage'
-import { MapRoutePlannerPage } from './pages/MapRoutePlannerPage'
 import { AssignmentsPage } from './pages/AssignmentsPage'
 import { CompletedArchivePage } from './pages/CompletedArchivePage'
 import { WorkerDashboardPage } from './pages/WorkerDashboardPage'
@@ -41,18 +39,6 @@ function App() {
           {/* Public Authentication Pages */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-
-          {/* Map & Route Planner (Interactive Google Map + Dijkstra) */}
-          <Route
-            path="/map"
-            element={
-              <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER', 'MAINTENANCE_STAFF', 'WORKER', 'VIEWER', 'PUBLIC']}>
-                <Layout>
-                  <MapRoutePlannerPage />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
 
           {/* Admin & Fire Officer Operations Overview */}
           <Route
@@ -142,23 +128,13 @@ function App() {
             }
           />
 
-          {/* Shared Road Network & Route Tools */}
+          {/* Shared Road Network */}
           <Route
             path="/network"
             element={
               <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER', 'MAINTENANCE_STAFF', 'WORKER', 'VIEWER', 'PUBLIC']}>
                 <Layout>
                   <RoadNetworkPage />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/routes"
-            element={
-              <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER', 'MAINTENANCE_STAFF', 'WORKER']}>
-                <Layout>
-                  <RouteFinderPage />
                 </Layout>
               </ProtectedRoute>
             }
