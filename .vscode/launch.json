@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot - RoadMaintenanceApplication",
+            "request": "launch",
+            "mainClass": "com.example.roadmaintenance.RoadMaintenanceApplication",
+            "projectName": "road-maintenance-system",
+            "cwd": "${workspaceFolder}/backend"
+        },
+        {
+            "type": "java",
+            "name": "Run Main (CLI Standalone)",
+            "request": "launch",
+            "mainClass": "Main",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against Frontend",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend"
+        }
+    ]
+}
