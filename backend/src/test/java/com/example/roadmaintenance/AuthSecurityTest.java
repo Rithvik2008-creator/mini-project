@@ -66,7 +66,6 @@ public class AuthSecurityTest {
     @DisplayName("Role hierarchy correctly distinguishes privileged from non-privileged roles")
     void testRolePrivileges() {
         assertTrue(UserRole.ADMIN.isPrivileged(), "ADMIN must be marked privileged");
-        assertTrue(UserRole.FIRE_SERVICE_OFFICER.isPrivileged(), "FIRE_SERVICE_OFFICER must be marked privileged");
         assertFalse(UserRole.MAINTENANCE_STAFF.isPrivileged(), "MAINTENANCE_STAFF is not an administrative privileged role");
         assertFalse(UserRole.VIEWER.isPrivileged(), "VIEWER is not privileged");
         assertFalse(UserRole.PUBLIC.isPrivileged(), "PUBLIC is not privileged");

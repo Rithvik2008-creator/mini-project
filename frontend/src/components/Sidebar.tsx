@@ -14,7 +14,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 export function Sidebar() {
-  const { user, isAdmin, isFireServiceOfficer, isMaintenanceStaff, isViewer, logout } = useAuth()
+  const { user, isAdmin, isMaintenanceStaff, isViewer, logout } = useAuth()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -33,14 +33,7 @@ export function Sidebar() {
     { to: '/archive', label: 'Completed Archive', icon: Archive },
   ]
 
-  if (isFireServiceOfficer) {
-    navItems = [
-      { to: '/', label: 'Incident Overview', icon: LayoutDashboard },
-      { to: '/reports', label: 'Damage Reports', icon: AlertTriangle },
-      { to: '/priority', label: 'Priority Queue', icon: ShieldCheck },
-      { to: '/network', label: 'Road Network', icon: GitFork },
-    ]
-  } else if (isMaintenanceStaff) {
+  if (isMaintenanceStaff) {
     navItems = [
       { to: '/worker', label: 'My Assignments', icon: HardHat },
       { to: '/network', label: 'Road Network', icon: GitFork },
@@ -54,14 +47,12 @@ export function Sidebar() {
 
   const roleBadgeStyle = () => {
     if (isAdmin) return 'bg-purple-500/20 text-purple-300 border-purple-500/30'
-    if (isFireServiceOfficer) return 'bg-rose-500/20 text-rose-300 border-rose-500/30'
     if (isMaintenanceStaff) return 'bg-amber-500/20 text-amber-300 border-amber-500/30'
     return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
   }
 
   const roleLabel = () => {
     if (isAdmin) return 'ADMINISTRATOR'
-    if (isFireServiceOfficer) return 'FIRE SERVICE OFFICER'
     if (isMaintenanceStaff) return user?.teamId ? `MAINTENANCE (${user.teamId})` : 'MAINTENANCE STAFF'
     return 'VIEWER / CITIZEN'
   }

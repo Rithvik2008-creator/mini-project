@@ -10,10 +10,6 @@ public record AuthenticatedUser(
         return role == UserRole.ADMIN;
     }
 
-    public boolean isFireServiceOfficer() {
-        return role == UserRole.FIRE_SERVICE_OFFICER;
-    }
-
     public boolean isMaintenanceStaff() {
         return role == UserRole.MAINTENANCE_STAFF || role == UserRole.WORKER;
     }

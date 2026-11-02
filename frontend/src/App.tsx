@@ -40,11 +40,11 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 
-          {/* Admin & Fire Officer Operations Overview */}
+          {/* Admin Operations Overview */}
           <Route
             path="/"
             element={
-              <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER']}>
+              <ProtectedRoute allowedRoles={['ADMIN']}>
                 <Layout>
                   <DashboardPage />
                 </Layout>
@@ -54,7 +54,7 @@ function App() {
           <Route
             path="/reports"
             element={
-              <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER']}>
+              <ProtectedRoute allowedRoles={['ADMIN']}>
                 <Layout>
                   <DamageReportsPage />
                 </Layout>
@@ -64,7 +64,7 @@ function App() {
           <Route
             path="/priority"
             element={
-              <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER']}>
+              <ProtectedRoute allowedRoles={['ADMIN']}>
                 <Layout>
                   <PriorityQueuePage />
                 </Layout>
@@ -132,7 +132,7 @@ function App() {
           <Route
             path="/network"
             element={
-              <ProtectedRoute allowedRoles={['ADMIN', 'FIRE_SERVICE_OFFICER', 'MAINTENANCE_STAFF', 'WORKER', 'VIEWER', 'PUBLIC']}>
+              <ProtectedRoute allowedRoles={['ADMIN', 'MAINTENANCE_STAFF', 'WORKER', 'VIEWER', 'PUBLIC']}>
                 <Layout>
                   <RoadNetworkPage />
                 </Layout>

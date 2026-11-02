@@ -117,7 +117,7 @@ public class AuthService {
             role = UserRole.VIEWER;
         }
 
-        // Security check: Public signup must never grant privileged roles (ADMIN, FIRE_SERVICE_OFFICER)
+        // Security check: Public signup must never grant privileged roles (ADMIN)
         if (role.isPrivileged()) {
             AuthenticatedUser currentUser = UserContext.get();
             boolean isAdminInvoking = currentUser != null && currentUser.isAdmin();

@@ -28,7 +28,7 @@ export function LoginPage() {
       if (from) {
         navigate(from, { replace: true })
       } else {
-        if (res.data.role === 'ADMIN' || res.data.role === 'FIRE_SERVICE_OFFICER') {
+        if (res.data.role === 'ADMIN') {
           navigate('/', { replace: true })
         } else if (res.data.role === 'MAINTENANCE_STAFF' || res.data.role === 'WORKER') {
           navigate('/worker', { replace: true })

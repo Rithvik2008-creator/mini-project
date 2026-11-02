@@ -4,7 +4,6 @@ export type RepairType = 'POTHOLE' | 'RESURFACING'
 
 export type UserRole =
   | 'ADMIN'
-  | 'FIRE_SERVICE_OFFICER'
   | 'MAINTENANCE_STAFF'
   | 'VIEWER'
   | 'WORKER'

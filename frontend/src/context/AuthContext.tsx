@@ -7,7 +7,6 @@ interface AuthContextType {
   token: string | null
   isAuthenticated: boolean
   isAdmin: boolean
-  isFireServiceOfficer: boolean
   isMaintenanceStaff: boolean
   isViewer: boolean
   isWorker: boolean
@@ -94,7 +93,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   const isAdmin = user?.role === 'ADMIN'
-  const isFireServiceOfficer = user?.role === 'FIRE_SERVICE_OFFICER'
   const isMaintenanceStaff = user?.role === 'MAINTENANCE_STAFF' || user?.role === 'WORKER'
   const isViewer = user?.role === 'VIEWER' || user?.role === 'PUBLIC'
   const isWorker = isMaintenanceStaff
@@ -107,7 +105,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         token,
         isAuthenticated: !!token && !!user,
         isAdmin,
-        isFireServiceOfficer,
         isMaintenanceStaff,
         isViewer,
         isWorker,

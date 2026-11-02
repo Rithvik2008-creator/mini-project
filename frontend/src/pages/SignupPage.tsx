@@ -15,7 +15,6 @@ import {
   KeyRound,
   CheckCircle2,
   Clock,
-  Flame,
   Eye,
   RefreshCw
 } from 'lucide-react'
@@ -99,8 +98,8 @@ export function SignupPage() {
       setError('Please select an active maintenance team.')
       return false
     }
-    if ((role === 'ADMIN' || role === 'FIRE_SERVICE_OFFICER') && !adminSecretKey.trim()) {
-      setError('Privileged roles (Admin, Fire Service Officer) require an Administrative Provisioning Key.')
+    if (role === 'ADMIN' && !adminSecretKey.trim()) {
+      setError('Administrator registration requires an Administrative Provisioning Key.')
       return false
     }
     return true
@@ -142,7 +141,7 @@ export function SignupPage() {
       return
     }
 
-    const isPrivilegedWithKey = (role === 'ADMIN' || role === 'FIRE_SERVICE_OFFICER') && adminSecretKey.trim().length > 0
+    const isPrivilegedWithKey = role === 'ADMIN' && adminSecretKey.trim().length > 0
 
     if (!otpSent && !isPrivilegedWithKey) {
       setError('Please click "Send Verification Code" first to receive an email OTP.')
@@ -164,7 +163,7 @@ export function SignupPage() {
         role,
         otp: otp.trim() || undefined,
         teamId: (role === 'MAINTENANCE_STAFF' || role === 'WORKER') ? teamId : undefined,
-        adminSecretKey: (role === 'ADMIN' || role === 'FIRE_SERVICE_OFFICER') ? adminSecretKey.trim() : undefined,
+        adminSecretKey: role === 'ADMIN' ? adminSecretKey.trim() : undefined,
       }
 
       const res = await api.post<AuthResponse>('/auth/signup', payload)
@@ -221,7 +220,7 @@ export function SignupPage() {
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
               Select Your Operational Role
             </label>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
               <button
                 type="button"
                 onClick={() => {
@@ -255,22 +254,6 @@ export function SignupPage() {
               >
                 <HardHat className="h-5 w-5 text-amber-400" />
                 <span className="text-[11px] font-semibold">Maintenance Staff</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setRole('FIRE_SERVICE_OFFICER')
-                  setError(null)
-                }}
-                className={`flex flex-col items-center justify-center gap-1.5 rounded-xl border p-3 text-center transition-all ${
-                  role === 'FIRE_SERVICE_OFFICER'
-                    ? 'border-rose-500 bg-rose-500/15 text-white shadow-md shadow-rose-500/20'
-                    : 'border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-slate-200'
-                }`}
-              >
-                <Flame className="h-5 w-5 text-rose-400" />
-                <span className="text-[11px] font-semibold">Fire Officer</span>
               </button>
 
               <button
@@ -379,7 +362,7 @@ export function SignupPage() {
             </div>
 
             {/* Email Verification OTP Section */}
-            {(otpSent || (role !== 'ADMIN' && role !== 'FIRE_SERVICE_OFFICER')) && (
+            {(otpSent || role !== 'ADMIN') && (
               <div className="rounded-xl border border-cyan-500/30 bg-cyan-500/10 p-4">
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-300">
@@ -440,8 +423,8 @@ export function SignupPage() {
               </div>
             )}
 
-            {/* Role-specific: Administrator / Officer Provisioning Key */}
-            {(role === 'ADMIN' || role === 'FIRE_SERVICE_OFFICER') && (
+            {/* Role-specific: Administrator Provisioning Key */}
+            {role === 'ADMIN' && (
               <div className="rounded-xl border border-purple-500/30 bg-purple-500/10 p-3.5">
                 <div className="flex items-center justify-between">
                   <label className="block text-xs font-semibold uppercase tracking-wider text-purple-300">

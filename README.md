@@ -46,10 +46,9 @@ The system implements core object-oriented software engineering principles and a
   - Rate limited (60-second resend cooldown and 5 attempts per window).
 - **Supported Roles**:
   - `ADMIN`: Full administrative access to dashboard, reports, teams, roads, closures, assignments, and audit logs.
-  - `FIRE_SERVICE_OFFICER`: Emergency route planning, damage prioritization, and road incident monitoring.
   - `MAINTENANCE_STAFF`: Field crew portal to view assignments, navigation routes, and submit completion details.
   - `VIEWER`: Public citizen portal to view live road statuses and submit road damage reports.
-- **Privileged Account Protection**: Public signup cannot grant `ADMIN` or `FIRE_SERVICE_OFFICER` roles without an authorized administrative provisioning key.
+- **Privileged Account Protection**: Public signup cannot grant `ADMIN` role without an authorized administrative provisioning key.
 
 ---
 
